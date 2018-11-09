@@ -10,6 +10,9 @@ matrix:
         - REACT_NATIVE_VERSION=0.51.1
       android:
         components:
+          - tools
+          - platform-tools
+          - tools
           - build-tools-27.0.3
           - build-tools-27.0.2
           - build-tools-26.0.2
@@ -21,18 +24,16 @@ matrix:
           - extra-android-m2repository
           - extra-google-google_play_services
           - extra-google-m2repository
-          - sys-img-armeabi-v7a-android-24
-          - sys-img-armeabi-v7a-android-25
-          - sys-img-armeabi-v7a-android-26
           - sys-img-armeabi-v7a-android-27
-          - sys-img-armeabi-v7a-android-28
+          - sys-img-x86_64-android-27
+          - sys-img-x86-android-27
       install:
         - npm install -g react-native-cli >/dev/null 2>&1
         - npm install -g detox-cli >/dev/null 2>&1
         - gem install xcpretty >/dev/null 2>&1
         - gem install github_changelog_generator
         - android list targets
-        - echo no | android create avd --force -n Pixel_2_API_28 -t android-24 --abi armeabi-v7a
+        - echo no | android create avd --force -n Pixel_2_API_28 -t android-27 --abi armeabi-v7a
       script:
         - pwd
         - npm install
