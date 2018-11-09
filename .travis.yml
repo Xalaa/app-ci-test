@@ -23,6 +23,7 @@ matrix:
         - npm install -g detox-cli >/dev/null 2>&1
         - gem install xcpretty >/dev/null 2>&1
         - gem install github_changelog_generator
+        - android list targets
         - android create avd --force -n Pixel_2_API_27 -t android-22 --abi armeabi-v7a
       script:
         - pwd
