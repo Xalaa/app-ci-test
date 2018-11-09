@@ -24,8 +24,7 @@ matrix:
         - gem install xcpretty >/dev/null 2>&1
         - gem install github_changelog_generator
         - android list targets
-        - android create avd --force -n Pixel_2_API_27 -t android-27
-        - avdmanager create avd -n test -k "system-images;android-27;google_apis;x86"
+        - avdmanager create avd -n Pixel_2_API_27 -k "system-images;android-27;google_apis;x86"
       script:
         - pwd
         - npm install
