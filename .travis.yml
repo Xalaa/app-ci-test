@@ -19,16 +19,17 @@ matrix:
           - extra-google-m2repository
           - sys-img-armeabi-v7a-android-27
       install:
-      - npm install -g react-native-cli >/dev/null 2>&1
-      - npm install -g detox-cli >/dev/null 2>&1
-      - gem install xcpretty >/dev/null 2>&1
-      - gem install github_changelog_generator
+        - npm install -g react-native-cli >/dev/null 2>&1
+        - npm install -g detox-cli >/dev/null 2>&1
+        - gem install xcpretty >/dev/null 2>&1
+        - gem install github_changelog_generator
+        - android create avd --force -n Pixel_2_API_27 -t android-22 --abi armeabi-v7a
       script:
-      - pwd
-      - npm install
-      - npm start &
-      - detox build --configuration android.emu.debug
-      - detox test  --configuration android.emu.debug --headless --no-color
+        - pwd
+        - npm install
+        - npm start &
+        - detox build --configuration android.emu.debug
+        - detox test  --configuration android.emu.debug --headless --no-color
 
 branches:
   only:
