@@ -32,7 +32,7 @@ matrix:
         - gem install xcpretty >/dev/null 2>&1
         - gem install github_changelog_generator
         - android list targets
-        - android create avd --force -n Pixel_2_API_28 -t android-24 --abi armeabi-v7a
+        - echo no | android create avd --force -n Pixel_2_API_28 -t android-24 --abi armeabi-v7a
       script:
         - pwd
         - npm install
