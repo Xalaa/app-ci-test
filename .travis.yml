@@ -23,6 +23,8 @@ matrix:
       - gem install xcpretty >/dev/null 2>&1
       - gem install github_changelog_generator
       script:
+      - pwd
+      - npm install
       - npm start &
       - detox build --configuration android.emu.debug
       - detox test  --configuration android.emu.debug --headless --no-color
