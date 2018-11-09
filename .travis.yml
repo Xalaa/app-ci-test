@@ -13,6 +13,7 @@ matrix:
           - build-tools-27.0.3
           - build-tools-27.0.2
           - build-tools-26.0.2
+          - android-24
           - android-25
           - android-26
           - android-27
@@ -20,6 +21,7 @@ matrix:
           - extra-android-m2repository
           - extra-google-google_play_services
           - extra-google-m2repository
+          - sys-img-armeabi-v7a-android-24
           - sys-img-armeabi-v7a-android-25
           - sys-img-armeabi-v7a-android-26
           - sys-img-armeabi-v7a-android-27
@@ -30,7 +32,7 @@ matrix:
         - gem install xcpretty >/dev/null 2>&1
         - gem install github_changelog_generator
         - android list targets
-        - android create avd --force -n Pixel_2_API_28 -t android-28 --abi armeabi-v7a
+        - android create avd --force -n Pixel_2_API_28 -t android-24 --abi armeabi-v7a
       script:
         - pwd
         - npm install
