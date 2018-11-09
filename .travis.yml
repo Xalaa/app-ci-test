@@ -39,7 +39,7 @@ matrix:
         - npm install
         - npm start &
         - detox build --configuration android.emu.debug
-        - detox test  --configuration android.emu.debug --headless --no-color
+        - detox test  --configuration android.emu.debug --headless --no-color --gpu swiftshader
 
 branches:
   only:
