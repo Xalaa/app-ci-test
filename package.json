@@ -3,7 +3,10 @@
   "version": "9.0.6",
   "private": true,
   "scripts": {
-    "start": "react-native start"
+    "start": "react-native start",
+    "e2e:android": "detox test --configuration android.emu.release --take-screenshots all --record-logs all",
+    "build:android": "detox build --configuration android.emu.release"
+
   },
   "dependencies": {
     "react": "16.0.0",
