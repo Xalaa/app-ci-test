@@ -1,34 +1,17 @@
 language: android
-jdk: oraclejdk8
-env:
-  global:
-    - ANDROID_API_LEVEL=25
-    - ANDROID_BUILD_TOOLS_VERSION=25.0.2
 android:
-  licenses:
-    - 'android-sdk-preview-license-.+'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
   components:
-    - tools
-    - platform-tools
-    # The BuildTools version used by your project
-    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-    # The SDK version used to compile your project
-    - android-$ANDROID_API_LEVEL
-    # Additional components
-    - extra-google-google_play_services
-    - extra-google-m2repository
+    - build-tools-19.0.3
+    - $ANDROID_TARGET
+    - sys-img-armeabi-v7a-$ANDROID_TARGET
+    - extra-android-support
     - extra-android-m2repository
-    - addon-google_apis-google-$ANDROID_API_LEVEL
+    - extra-google-m2repository
+env:
+  matrix:
+    - ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
 before_script:
-  # Prepare pre-accepted licenses to not be promted at installation
-  - echo no | android create avd --force -n test -t android-25 --abi google_apis/armeabi-v7a
-  - emulator -avd test -no-audio -no-window &
+  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
-script:
-  - npm install
-  - npm start &
-  - detox build --configuration android.emu.debug
-  - detox test  --configuration android.emu.debug --headless --no-color
