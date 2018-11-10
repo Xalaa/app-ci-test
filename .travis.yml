@@ -1,17 +1,27 @@
-language: android
-android:
-  components:
-    - build-tools-19.0.3
-    - $ANDROID_TARGET
-    - sys-img-armeabi-v7a-$ANDROID_TARGET
-    - extra-android-support
-    - extra-android-m2repository
-    - extra-google-m2repository
-env:
-  matrix:
-    - ANDROID_TARGET=android-27  ANDROID_ABI=armeabi-v7a
-before_script:
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
+language: node_js
+node_js: 8
+
+matrix:
+  include:
+    - language: android
+      os: linux
+      jdk: oraclejdk8
+      env:
+        - REACT_NATIVE_VERSION=0.51.1
+      android:
+        components:
+          - build-tools-27.0.2
+          - build-tools-26.0.2
+          - android-27
+          - extra-android-m2repository
+          - extra-google-google_play_services
+          - extra-google-m2repository
+          - sys-img-armeabi-v7a-android-27
+      install:
+      - ./scripts/install.android.sh
+      script:
+      - ./scripts/ci.android.sh
+
+before_install:
+  - nvm install 8
+  - pip install awscli --upgrade --user
